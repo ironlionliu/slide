@@ -69,25 +69,30 @@
 			var newClass = "";
 			var oldClass = 'main-i_left|main-i_active|main-i_right|main-i_pre|main-i_next';
 			var dom = this._getDom("#template_main").childNodes;
+			var dom_ctrl = this._getDom("#template_ctrl").childNodes;
 			if(mode == "next"){
 				/*main-i_active --> main-i_left*/
 				_self._changeClass("main-i_pre",oldClass,dom[_self.index]);
+				dom_ctrl[_self.index].setAttribute("class","ctrl-i");
 				/*main-i_active的下一个 --> main-i_right --> main-i_active*/
 				_self.index = (_self.index + 1) % _self.num;
 				_self._changeClass("main-i_right",oldClass,dom[_self.index]);
 				setTimeout(_active,100);
 				function _active(){
 					_self._changeClass("main-i_active",oldClass,dom[_self.index]);
+					dom_ctrl[_self.index].setAttribute("class","ctrl-i active");
 				}
 			}else if(mode == "pre"){
 				/*main-i_active --> main-i_left*/
 				_self._changeClass("main-i_next",oldClass,dom[_self.index]);
+				dom_ctrl[_self.index].setAttribute("class","ctrl-i");
 				/*main-i_active的下一个 --> main-i_right --> main-i_active*/
 				_self.index = (_self.index + _self.num - 1) % _self.num;
 				_self._changeClass("main-i_left",oldClass,dom[_self.index]);
 				setTimeout(_active,100);
 				function _active(){
 					_self._changeClass("main-i_active",oldClass,dom[_self.index]);
+					dom_ctrl[_self.index].setAttribute("class","ctrl-i active");
 				}
 				
 			}else{
@@ -95,23 +100,27 @@
 				if(index > _self.index){
 					/*main-i_active --> main-i_pre*/
 					_self._changeClass("main-i_pre",oldClass,dom[_self.index]);
+					dom_ctrl[_self.index].setAttribute("class","ctrl-i");
 					/*index在右 --> main-i_right --> main-i_active*/
 					_self.index = index;
 					_self._changeClass("main-i_right",oldClass,dom[_self.index]);
 					setTimeout(_active,100);
 					function _active(){
 						_self._changeClass("main-i_active",oldClass,dom[_self.index]);
+						dom_ctrl[_self.index].setAttribute("class","ctrl-i active");
 					}
 					
 				}else if(index < _self.index){
 					/*main-i_active --> main-i_next*/
 					_self._changeClass("main-i_next",oldClass,dom[_self.index]);
+					dom_ctrl[_self.index].setAttribute("class","ctrl-i");
 					/*index在右 --> main-i_left --> main-i_active*/
 					_self.index = index;
 					_self._changeClass("main-i_left",oldClass,dom[_self.index]);
 					setTimeout(_active,100);
 					function _active(){
 						_self._changeClass("main-i_active",oldClass,dom[_self.index]);
+						dom_ctrl[_self.index].setAttribute("class","ctrl-i active");
 					}
 				}
 				
