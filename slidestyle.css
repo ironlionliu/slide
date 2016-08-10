@@ -78,7 +78,10 @@
 	width: 100%;
 	}
 .slider	.main .main-i a{
-	color: #CCC;
+	color: #666;
+	}
+.slider	.main .main-i a:hover{
+	color: #fff;
 	}
 .slider	.main .main-i .caption{
 	position: absolute;

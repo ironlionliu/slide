@@ -37,7 +37,7 @@
 						})();
 						
 						
-					});/**/
+					});/*这个立即执行函数没有起到保存变量的效果，原因是它的外层都没有立即执行！*/
 				}
 			},
 		_renderSliders : function(sliders){
@@ -116,7 +116,6 @@
 				}
 				
 			}
-			this.index = _self.index;
 		},
 		
 		_changeClass : function(newClass,oldClass,_dom){
