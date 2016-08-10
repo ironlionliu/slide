@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+    	<title>slide</title>
+        <meta charset="utf-8"/>
+        <link rel="stylesheet" href="reset.css"/>
+        <link rel="stylesheet" href="slidestyle.css"/>
+    </head>
+    <body>
+    	<div class="slider">
+        	<div id="pre"><img src="images/pre.png"/></div>
+        	<div class="main" id="template_main">
+            	<div class="main-i {{class}}" id="main_{{index}}">
+               		<a href="{{href}}">
+                        <img src="{{src}}"/>
+                        <div class="caption">
+                                <h2>{{h2}}</h2>
+                                <h3>{{h3}}</h3>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div id="next"><img src="images/next.png"/></div>
+            <div class="ctrl" id="template_ctrl">
+                <a class="ctrl-i" id="ctrl_{{index}}">
+                    <img src="{{src}}"/>
+                </a>
+           	</div>
+		</div>
+    </body>
+</html>
+<script type="text/javascript" src="slide.js"></script>
+<script type="text/javascript">
+	
+	
+	var sliders = [
+	{index:0,src:"images/dmg.gif",class:"main-i_active",h2:"大风起兮云飞扬",h3:"西汉历史",href:"http://www.baidu.com"},
+	{index:1,src:"images/xihan.jpg",class:"main-i_left",h2:"大风起2兮",h3:"西汉历史",href:"http://www.baidu.com"},
+	{index:2,src:"images/kongzi.jpg",class:"main-i_left",h2:"大风起3兮",h3:"西汉历史",href:"http://www.baidu.com"},
+	{index:3,src:"images/wyg.jpg",class:"main-i_left",h2:"大风起4兮",h3:"西汉历史",href:"http://www.baidu.com"},
+	{index:4,src:"images/dmg.gif",class:"main-i_left",h2:"大风起5兮",h3:"西汉历史",href:"http://www.baidu.com"}
+	];
+	var slider1 = new slider(sliders);
+	
+	
+	
+	
+	
+	
+	
+</script>
