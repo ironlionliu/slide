@@ -1,8 +1,11 @@
-	function slider(sliders){
+(function(){
+	
+	window.slider = function(sliders){
 		this._init(sliders);
 		this._preNext();
 		this._initListener();
 		this._turnSlider();
+		return this;
 	}
 	
 	
@@ -18,10 +21,9 @@
 		},
 		_initListener : function(){
 			var _self = this;
-			var template_ctrl = this._getDom("#template_ctrl").childNodes;
+			var template_ctrl = _self._getDom("#template_ctrl").childNodes;		
 			for(var i = 0; i < template_ctrl.length; i++){
-				
-				
+				/*凡是类似代码，宜用时间代理完成，在dom上附加额外信息*/
 				(function(i){
 					template_ctrl[i].addEventListener("click",function(){
 						_self._switchSlider(i,"");
@@ -39,7 +41,33 @@
 						
 					});/*这个立即执行函数没有起到保存变量的效果，原因是它的外层都没有立即执行！*/
 				}
-			},
+				
+			/*
+			_self._getDom("#template_main").ontouchstart = function(e){	alert("haha")};
+			
+			console.log(_self._getDom("#template_main"))/**/
+			_self._getDom("#template_main").addEventListener("touchstart",start);
+			var startX = 0;
+			var endX = 0;
+			
+			
+			function start(e){
+				var _self = this;
+				var touch = e.touches[0];
+				startX = touch.pageX;
+			}
+			_self._getDom("#template_main").addEventListener("touchend",end);/**/
+			function end(e){
+				var touch = e.changedTouches[0];
+				endX = touch.pageX;
+				var dx = startX - endX;
+				if(dx < 50){
+					_self._switchSlider((_self.index+4)%_self.num,"pre");
+				}else if(dx > -50){
+					_self._switchSlider((_self.index+1)%_self.num,"next");
+				}
+			}
+		},
 		_renderSliders : function(sliders){
 			var main_i = this._getDom("#template_main").innerHTML.replace(/^\s*/,'').replace(/\s*$/,'');
 			var ctrl_i = this._getDom("#template_ctrl").innerHTML.replace(/^\s*/,'').replace(/\s*$/,'');
@@ -135,7 +163,7 @@
 		
 		_turnSlider : function(){
 			var _self = this;
-			var _interval = 3000;
+			var _interval = 4000;
 			function _turn(){
 				_self._switchSlider((_self.index+1)%_self.num,"next");
 				}
@@ -169,3 +197,4 @@
 		}
 		
 	}	
+})();
